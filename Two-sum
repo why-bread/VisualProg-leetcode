@@ -1,17 +1,16 @@
-# LeetCode Problem: Two Sum
-# Time Complexity: O(n)
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> seen;
 
-class Solution:
-    def twoSum(self, nums, target):
-        seen = {}
-        for i, num in enumerate(nums):
-            diff = target - num
-            if diff in seen:
-                return [seen[diff], i]
-            seen[num] = i
+        for (int i = 0; i < nums.size(); i++) {
+            int diff = target - nums[i];
 
-# Example usage (optional)
-if __name__ == "__main__":
-    nums = [2, 7, 11, 15]
-    target = 9
-    print(Solution().twoSum(nums, target))  # Output: [0, 1]
+            if (seen.count(diff)) {
+                return { seen[diff], i };
+            }
+            seen[nums[i]] = i;
+        }
+        return {};
+    }
+};
